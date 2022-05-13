@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="card-text">
+            <h4>Категории</h4>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-group">
+            {% for item in products %}
+            {% load thumbnail %}
+            {% thumbnail item.image '300x225' padding=True as im %}
+            <div class="card mr-2 shadow-sm" style="width: 19rem;">
+              <img src="{{ im.url }}">
+                <div class="card-body">
+            <a href="{% url 'store:category' item.slug %}" type="button" class="btn btn-outline-primary btn-lg btn-block">{{ item.name }}</a>
+                </div>
+            </div>
+            {% endthumbnail %}
+            {% endfor %}
+          </div>
+    </div>
+{% endblock %}

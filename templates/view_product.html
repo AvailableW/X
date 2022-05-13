@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+        <div class="row" style="margin-bottom: 5%;">
+            {% load thumbnail %}
+            {% thumbnail product.image "500x300" crop="center" as im %}
+            <div class="col-sm-4">
+              <img src="{{ im.url }}"  class="card-img-top">
+            </div>
+            <div class="col-sm-8">
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description | safe }}</p>
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        {% csrf_token %}
+                        {{ cart_product_form }}
+                        <input type="submit" value="в корзину" class="btn btn-outline-primary btn-lg btn-block">
+                    </form>
+                <button type="button" value="Previous Page" class="btn btn-outline-primary btn-lg btn-block" onClick="window.history.back();return false;">
+                    Назад
+                </button>
+            </div>
+            {% endthumbnail %}
+        </div>
+
+{% endblock %}
