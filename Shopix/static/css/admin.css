@@ -1,0 +1,19 @@
+#header{
+    background: #e64a19;
+}
+
+body{
+    background: #424242;
+}
+
+#content .module h2, .module caption, .inline-group h2{
+    background: coral;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited{
+    color: white;
+}
+
+div.breadcrumbs{
+    background: #212121;
+}
